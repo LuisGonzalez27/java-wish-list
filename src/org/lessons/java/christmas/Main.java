@@ -1,46 +1,34 @@
 package org.lessons.java.christmas;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
 
-        ArrayList<String> wishList = new ArrayList<>();
+        List<String> wishList = new ArrayList<>();
+        ChristmasLetter letter = new ChristmasLetter("","",wishList);
+        boolean check = false;
 
-        String wish;
-        String inputUser;
+        System.out.print("Inserisci il tuo nome: ");
+        letter.setName(scan.next());
+        System.out.print("Inserisci il tuo indirizzo: ");
+        letter.setAddres(scan.next());
 
-        System.out.println("Inserisci un desiderio nella lista!");
-        inputUser = scan.nextLine();
-
-        wish = inputUser;
-        wishList.add(wish);
-        System.out.println("Sono già stati espressi " + wishList.size() + " desideri.");
-
-        System.out.println("\nVuoi inserire un altro desiderio? \n- si\n- no");
-        inputUser = scan.nextLine();
-
-        if(inputUser.equals("si")) {
-            while(inputUser.equals("si")) {
-                System.out.println("Inserisci il tuo desiderio: ");
-                wish = scan.nextLine();
-                wishList.add(wish);
-                System.out.println("Sono già stati espressi " + wishList.size() + " desideri.");
-
-                System.out.println("\nVuoi inserire un altro desiderio? \n- si\n- no");
-                inputUser = scan.nextLine();
-            }
+        while (!check){
+            System.out.println("Inserisci un desiderio nella lista: ");
+            String wish = scan.next();
+            System.out.println("Vuoi inserire un altro desiderio? \n- si\n- no");
+            check = scan.next().equalsIgnoreCase("no");
+            wishList.add(wish);
         }
-
-        System.out.println("Il numero totale dei desideri è: " + wishList.size());
-        Collections.sort(wishList);
-        for (String inList : wishList) {
-            System.out.println("-" + inList);
+        try {
+            letter.send();
         }
-
+        catch (RuntimeException e){
+            System.out.println(e.getMessage());
+        }
+        scan.close();
     }
 }
