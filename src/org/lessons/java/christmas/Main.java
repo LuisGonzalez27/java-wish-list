@@ -19,9 +19,10 @@ public class Main {
         while (!check){
             System.out.println("Inserisci un desiderio nella lista: ");
             String wish = scan.next();
+            wishList.add(wish);
+            System.out.println("Sono già stati espressi " + wishList.size() + " desideri.");
             System.out.println("Vuoi inserire un altro desiderio? \n- si\n- no");
             check = scan.next().equalsIgnoreCase("no");
-            wishList.add(wish);
         }
         try {
             letter.send();
