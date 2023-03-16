@@ -8,7 +8,7 @@ public class ChristmasLetter {
     private String name;
     private String address;
     private List<String> christmasLetter;
-    private boolean goodOrNot;
+    private final boolean goodOrNot;
 
     Random rand = new Random();
 
@@ -24,7 +24,7 @@ public class ChristmasLetter {
         return address;
     }
 
-    public void setAddres(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

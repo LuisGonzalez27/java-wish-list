@@ -14,7 +14,7 @@ public class Main {
         System.out.print("Inserisci il tuo nome: ");
         letter.setName(scan.next());
         System.out.print("Inserisci il tuo indirizzo: ");
-        letter.setAddres(scan.next());
+        letter.setAddress(scan.next());
 
         while (!check){
             System.out.println("Inserisci un desiderio nella lista: ");
